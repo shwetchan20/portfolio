@@ -1,57 +1,176 @@
 # Shwet Kshirsagar — Personal Portfolio
 
-<img width="1892" height="907" alt="Screenshot 2026-10-24 031424" src="https://github.com/user-attachments/assets/b90f1183-80d5-4f85-8004-129e0233bc93" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d52a2e30-0571-45a9-a630-4f6c9994b1a2" alt="Portfolio homepage" width="100%" />
+</p>
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/b90f1183-80d5-4f85-8004-129e0233bc93" alt="Portfolio screenshot 2" width="49%" />
+  <img src="https://github.com/user-attachments/assets/40a25637-c002-4747-96ba-171e4406cefd" alt="Portfolio screenshot 3" width="49%" />
+</p>
 
-A personal portfolio website built with Next.js, TypeScript, and Tailwind CSS. It showcases my background, skills, projects, and contact information through a responsive interface with interactive components and motion effects.
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d65aa1b5-cf64-4de3-999f-4d05019d5f45" alt="Portfolio screenshot 4" width="100%" />
+</p>
 
-**Repository:** [shwetchan20/portfolio](https://github.com/shwetchan20/portfolio)
-
-**Live Demo:** Add your deployed Vercel URL after confirming deployment.
+<p align="center">
+  <a href="https://github.com/shwetchan20/portfolio"><strong>GitHub Repository</strong></a>
+  &nbsp; • &nbsp;
+  <a href="https://portfolio-delta-ten-rbvz3zzgdu.vercel.app/"><strong>Live Website</strong></a>
+</p>
 
 ---
 
-## 1. Project Objective
+## About the Project
 
-The objective of this project is to develop and deploy a personal portfolio website while applying DevOps practices, including version control, automated validation, production builds, and deployment preparation.
+This is my personal portfolio website, built to showcase my background, technical skills, projects, and experience through a responsive interface with interactive components, animations, and visual effects.
 
-The project demonstrates:
+The project also demonstrates practical DevOps concepts, including Git-based version control, automated validation with Ansible, production-build verification, and deployment preparation.
 
-* Development of a responsive, multi-page website.
-* Source-code management using Git and GitHub.
-* Automated project validation using Ansible.
-* Production-build verification using Next.js.
-* Deployment preparation for Vercel.
+### Objectives
 
-## 2. Technology Stack
+* Build a responsive, multi-page personal portfolio.
+* Present projects, skills, education, and experience.
+* Use Git and GitHub to manage source code and development history.
+* Automate project validation and production builds with Ansible.
+* Prepare and deploy the application using Vercel.
 
-| Technology     | Purpose                                                      |
-| -------------- | ------------------------------------------------------------ |
-| Next.js 16     | React framework and application routing                      |
-| React 19       | Component-based user interface                               |
-| TypeScript     | Type safety                                                  |
-| Tailwind CSS 4 | Styling and responsive layouts                               |
-| Motion         | Interface animations                                         |
-| OGL / WebGL    | Animated shader effects                                      |
-| Lenis          | Smooth scrolling                                             |
-| Matter.js      | Physics-based interactive elements                           |
-| Git and GitHub | Version control and source-code hosting                      |
-| Ansible        | Automated environment checks and production-build validation |
-| Vercel         | Website hosting and deployment                               |
+## DevOps Integration — Ansible
 
-## 3. Website Features
+Ansible is used to automate validation of the portfolio project and verify that it can be built for production.
 
-* Home page with an animated hero section.
+### What the playbook does
+
+The playbook, `ansible/validate-portfolio.yml`, performs the following tasks:
+
+1. Checks Node.js and npm availability.
+2. Displays the installed versions.
+3. Verifies that `package.json` exists.
+4. Verifies that `package-lock.json` exists.
+5. Executes the Next.js production build.
+6. Displays the build output.
+7. Reports success when validation completes.
+
+### Project files
+
+```text
+ansible/
+├── inventory.ini
+└── validate-portfolio.yml
+```
+
+* **`inventory.ini`** — Configures localhost as the Ansible target.
+* **`validate-portfolio.yml`** — Defines the validation and build tasks.
+
+### Run Ansible validation
+
+Install Ansible in a supported Linux environment, such as Ubuntu on WSL, then navigate to the project root and execute:
+
+```bash
+ansible-playbook -i ansible/inventory.ini ansible/validate-portfolio.yml
+```
+
+To check the playbook syntax without running the tasks:
+
+```bash
+ansible-playbook -i ansible/inventory.ini ansible/validate-portfolio.yml --syntax-check
+```
+
+### Validation result
+
+The playbook completed successfully, with the following results:
+
+| Check                    | Result |
+| ------------------------ | ------ |
+| Node.js and npm checks   | Passed |
+| Project file validation  | Passed |
+| Next.js production build | Passed |
+| Successful tasks         | 10     |
+| Failed tasks             | 0      |
+| Unreachable hosts        | 0      |
+
+The production build compiled the application, completed TypeScript checks, generated static pages, and finalized route optimization.
+
+**Deployment responsibility:** Ansible automates local validation and build verification. Vercel handles hosting and deployment; the current Ansible playbook does not directly deploy the website.
+
+### Ansible execution evidence
+
+Add a genuine screenshot of the successful terminal output here:
+
+![Ansible playbook execution](docs/screenshots/ansible-success.png)
+
+## Getting Started
+
+### Prerequisites
+
+* Node.js
+* npm
+* Git
+* Ansible (only required to run the DevOps validation playbook)
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/shwetchan20/portfolio.git
+cd portfolio
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Start the development server
+
+```bash
+npm run dev
+```
+
+Open http://localhost:3000 in your browser.
+
+### 4. Build for production
+
+```bash
+npm run build
+```
+
+### 5. Run the production server
+
+After successfully building the application:
+
+```bash
+npm run start
+```
+
+## Technology Stack
+
+| Technology     | Purpose                                     |
+| -------------- | ------------------------------------------- |
+| Next.js 16     | Application framework and routing           |
+| React 19       | Component-based UI                          |
+| TypeScript     | Type safety                                 |
+| Tailwind CSS 4 | Styling and responsive layouts              |
+| Motion         | Animations and transitions                  |
+| OGL / WebGL    | Shader effects                              |
+| Lenis          | Smooth scrolling                            |
+| Matter.js      | Physics-based interactions                  |
+| Git and GitHub | Version control and source-code hosting     |
+| Ansible        | Automated validation and build verification |
+| Vercel         | Hosting and deployment                      |
+
+## Features
+
+* Animated homepage and hero section.
 * About page featuring education, experience, skills, and technology stack.
-* Projects page presenting selected projects.
+* Projects page showcasing selected work.
 * Responsive navigation and theme support.
-* Interactive portrait and animated interface components.
-* WebGL shader effects and smooth scrolling.
+* Interactive visual elements and animation effects.
+* Smooth scrolling and WebGL shader effects.
 * Contact and social links.
 * SEO metadata, sitemap, and robots configuration.
-* Accessibility features, including keyboard navigation support and reduced-motion considerations.
 
-## 4. Project Structure
+## Project Structure
 
 ```text
 portfolio/
@@ -76,71 +195,26 @@ portfolio/
 │   └── ui/
 ├── lib/
 ├── public/
-├── ansible/
 ├── package.json
 ├── package-lock.json
 └── README.md
 ```
 
-## 5. Installation and Execution
+## Git and GitHub Workflow
 
-### Prerequisites
+Git and GitHub are used to track development changes and maintain the source-code history.
 
-* Node.js
-* npm
-* Git
+The workflow is:
 
-### Clone the repository
-
-```bash
-git clone https://github.com/shwetchan20/portfolio.git
-cd portfolio
-```
-
-### Install dependencies
-
-```bash
-npm install
-```
-
-### Run the development server
-
-```bash
-npm run dev
-```
-
-Open `http://localhost:3000` in your browser.
-
-### Build for production
-
-```bash
-npm run build
-```
-
-### Other available commands
-
-| Command                | Purpose                      |
-| ---------------------- | ---------------------------- |
-| `npm run lint`         | Check code with ESLint       |
-| `npm run typecheck`    | Run TypeScript type checking |
-| `npm run start`        | Start the production server  |
-| `npm run format:check` | Check formatting             |
-
-## 6. Git and GitHub Workflow
-
-Git and GitHub are used to track changes, maintain project history, and host the source code.
-
-The workflow followed is:
-
-1. Create and modify website components and pages.
-2. Review changes locally.
+1. Modify the website or its components.
+2. Review changes using `git status` and `git diff`.
 3. Stage the intended files.
-4. Commit changes with descriptive messages.
-5. Push commits to the GitHub repository.
+4. Commit changes with meaningful messages.
+5. Push commits to GitHub.
 6. Validate the production build.
-7. Deploy the application through Vercel.
+7. Deploy through Vercel.
 
-Example commands:
+Example:
 
 ```bash
 git status
@@ -149,138 +223,34 @@ git commit -m "Describe the change"
 git push origin main
 ```
 
-Each commit should represent a meaningful change. The repository's actual Git history provides evidence of the development process.
+## Deployment
 
-## 7. DevOps Integration Using Ansible
+The portfolio can be deployed through Vercel by importing the GitHub repository.
 
-### Objective
-
-Ansible automates checks for the local development environment and validates the portfolio by running its production build.
-
-### Files
-
-* `ansible/inventory.ini` — Defines localhost as the managed host.
-* `ansible/validate-portfolio.yml` — Contains the validation tasks.
-
-### Workflow
-
-The playbook performs these operations:
-
-1. Checks whether Node.js is installed.
-2. Checks whether npm is installed.
-3. Displays the detected tool versions.
-4. Verifies that `package.json` exists.
-5. Verifies that `package-lock.json` exists.
-6. Executes `npm run build` from the project directory.
-7. Displays the build output.
-8. Reports success when all tasks complete.
-
-### Run the playbook
-
-From the repository root:
-
-```bash
-ansible-playbook -i ansible/inventory.ini ansible/validate-portfolio.yml
-```
-
-### Validate playbook syntax
-
-```bash
-ansible-playbook -i ansible/inventory.ini ansible/validate-portfolio.yml --syntax-check
-```
-
-### Verified result
-
-The playbook completed successfully with:
-
-* **Successful tasks:** 10
-* **Failed tasks:** 0
-* **Unreachable hosts:** 0
-* **Production build:** Successful
-
-The production build compiled the application, completed TypeScript checks, generated static pages, and finalized route optimization.
-
-**Integration scope:** Ansible automates local validation and build verification. Vercel handles hosting and deployment; the playbook does not itself deploy the website.
-
-## 8. Website Deployment
-
-The project is intended to be hosted on Vercel.
-
-Deployment workflow:
-
-1. Import the GitHub repository into Vercel.
-2. Confirm that the framework is detected as Next.js.
-3. Keep the default build settings unless changes are required.
+1. Import `shwetchan20/portfolio` into Vercel.
+2. Confirm that Next.js is detected as the framework.
+3. Keep the default build settings unless changes are necessary.
 4. Deploy the project.
-5. Open the generated deployment URL.
-6. Verify the Home, About, and Projects pages.
+5. Verify the homepage, About page, and Projects page.
 
-**Live URL:** Replace this line with the verified Vercel deployment URL.
+**Live URL:** Replace `YOUR_VERCEL_URL` near the top of this README with your actual deployment URL. Remove this placeholder only after confirming the site is deployed.
 
-When the repository is connected to Vercel, pushing new commits to the configured production branch can trigger a new deployment.
+## Project Changes and Assignment Evidence
 
-## 9. Development Changes
+Use this section to document actual, meaningful changes and corresponding Git commits. Update the table based on your real commit history.
 
-Record the meaningful changes made during development below. Keep this section consistent with the actual commits in GitHub.
+| No. | Change                          | Evidence             |
+| --- | ------------------------------- | -------------------- |
+| 1   | Initial portfolio setup         | Git history          |
+| 2   | Application structure and pages | Git history          |
+| 3   | Hero section improvements       | Git history          |
+| 4   | Additional website improvements | Corresponding commit |
+| 5   | Ansible validation integration  | Corresponding commit |
 
-| No. | Change                                  | Evidence                     |
-| --- | --------------------------------------- | ---------------------------- |
-| 1   | Initial portfolio project setup         | Git commit history           |
-| 2   | Initial application structure and pages | Git commit history           |
-| 3   | Hero section improvements               | Git commit history           |
-| 4   | Additional website improvements         | Add the corresponding commit |
-| 5   | Ansible validation integration          | Add the corresponding commit |
 
-The table must be updated to reflect the actual changes and commit history before submission. Do not count documentation-only commits as website feature changes.
 
-## 10. Screenshots and Evidence
-
-Add genuine screenshots to `docs/screenshots/` and use the following section to document them.
-
-| Screenshot              | Evidence to capture                          |
-| ----------------------- | -------------------------------------------- |
-| `home-page.png`         | Portfolio home page running in the browser   |
-| `about-page.png`        | About page                                   |
-| `projects-page.png`     | Projects page                                |
-| `github-history.png`    | GitHub repository and commit history         |
-| `ansible-success.png`   | Successful Ansible playbook execution        |
-| `vercel-deployment.png` | Successful Vercel deployment and project URL |
-
-After adding the screenshots, embed them here:
-
-### Home Page
-
-![Portfolio home page]("E:\porfolio\public\picture\ar.jpg")
-
-### About Page
-
-![Portfolio about page](E:\porfolio\public\picture\image1.jpg)
-
-### Projects Page
-
-![Portfolio projects page](docs/screenshots/projects-page.png)
-
-### GitHub Commit History
-
-![GitHub commit history](docs/screenshots/github-history.png)
-
-### Ansible Validation
-
-![Successful Ansible validation](docs/screenshots/ansible-success.png)
-
-### Vercel Deployment
-
-![Successful Vercel deployment](docs/screenshots/vercel-deployment.png)
-
-*These image paths must point to actual screenshot files committed to the repository.*
-
-## 11. Conclusion
-
-This project combines personal website development with practical DevOps workflows. Git and GitHub provide source-code management and traceable history, Ansible automates environment checks and production-build validation, and Vercel provides the hosting and deployment platform.
-
-The result demonstrates the integration of application development, version control, automated validation, and deployment practices in a single project.
 
 ---
 
 **Author:** Shwet Kshirsagar
-**Repository:** https://github.com/shwetchan20/portfolio
+**Repository:** [shwetchan20/portfolio](https://github.com/shwetchan20/portfolio)
