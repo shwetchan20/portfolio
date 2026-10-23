@@ -1,0 +1,61 @@
+---
+- name: Validate Next.js Portfolio
+  hosts: portfolio
+  gather_facts: false
+
+  vars:
+    project_dir: "{{ playbook_dir }}/.."
+
+  tasks:
+    - name: Check Node.js installation
+      ansible.builtin.command: node --version
+      register: node_version
+      changed_when: false
+
+    - name: Check npm installation
+      ansible.builtin.command: npm --version
+      register: npm_version
+      changed_when: false
+
+    - name: Display tool versions
+      ansible.builtin.debug:
+        msg:
+          - "Node.js: {{ node_version.stdout }}"
+          - "npm: {{ npm_version.stdout }}"
+
+    - name: Verify package.json exists
+      ansible.builtin.stat:
+        path: "{{ project_dir }}/package.json"
+      register: package_file
+
+    - name: Stop if package.json is missing
+      ansible.builtin.assert:
+        that:
+          - package_file.stat.exists
+        fail_msg: "package.json was not found in the project directory."
+
+    - name: Verify package-lock.json exists
+      ansible.builtin.stat:
+        path: "{{ project_dir }}/package-lock.json"
+      register: lock_file
+
+    - name: Stop if package-lock.json is missing
+      ansible.builtin.assert:
+        that:
+          - lock_file.stat.exists
+        fail_msg: "package-lock.json was not found."
+
+    - name: Build portfolio for production
+      ansible.builtin.command: npm run build
+      args:
+        chdir: "{{ project_dir }}"
+      register: build_result
+      changed_when: true
+
+    - name: Display build output
+      ansible.builtin.debug:
+        var: build_result.stdout_lines
+
+    - name: Report validation success
+      ansible.builtin.debug:
+        msg: "Portfolio validation completed and the production build succeeded."
