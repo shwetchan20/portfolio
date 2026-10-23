@@ -1,3 +1,4 @@
+
 import {
   ArrowRight,
   Bot,
@@ -34,6 +35,8 @@ const PROJECTS: Project[] = [
       "An augmented-reality nutrition analyzer concept focused on food information and nutrition analysis.",
     meta: "Project 01",
     imageRatio: 16 / 10,
+    image: "/picture/ar.jpg",
+    imageAlt: "AR Nutrition Analyzer project preview",
   },
   {
     id: "krishidhan",
@@ -44,6 +47,8 @@ const PROJECTS: Project[] = [
       "An agriculture-focused platform combining crop recommendations, soil sensing, and data-driven agricultural decision support.",
     meta: "Project 02",
     imageRatio: 16 / 10,
+    image: "/picture/krishidhan.jpg",
+    imageAlt: "KrishiDhan agricultural technology platform",
   },
   {
     id: "screensense",
@@ -54,6 +59,8 @@ const PROJECTS: Project[] = [
       "A desktop-oriented project exploring AI-assisted screen context and contextual workflows.",
     meta: "Project 03",
     imageRatio: 16 / 10,
+    image: "/picture/screen.jpg",
+    imageAlt: "ScreenSense project preview",
   },
   {
     id: "remoteok-self-healing-scraper",
@@ -64,6 +71,8 @@ const PROJECTS: Project[] = [
       "A job-listing scraper designed to automate data collection and handle scraping failures through recovery mechanisms.",
     meta: "Project 04",
     imageRatio: 16 / 10,
+    image: "/picture/self%20heal.jpg",
+    imageAlt: "RemoteOK Self-Healing Scraper project preview",
   },
 ];
 
@@ -125,6 +134,7 @@ function ProjectCard({
   index: number;
 }): ReactNode {
   const Icon = project.icon;
+
   return (
     <FadeIn
       delay={Math.min(index * 0.06, 0.3)}
@@ -141,25 +151,28 @@ function ProjectCard({
         </header>
 
         <div
-          className="project-card__image ring-foreground/5 relative flex w-full items-center justify-center overflow-hidden rounded-2xl bg-foreground/2 dark:bg-foreground/4 ring-1"
+          className="project-card__image ring-foreground/5 relative flex w-full items-center justify-center overflow-hidden rounded-2xl bg-foreground/2 ring-1 dark:bg-foreground/4"
           style={{ aspectRatio: project.imageRatio }}
         >
           {project.image ? (
-            <div className="project-card__image-inner">
+            <div className="project-card__image-inner absolute inset-0">
               <Image
                 src={project.image}
                 alt={project.imageAlt ?? project.title}
                 fill
-                sizes="(min-width: 1024px) 540px, (min-width: 768px) 45vw, 100vw"
+                unoptimized
                 className="object-cover"
-                priority={index < 2}
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           ) : (
             <div className="relative flex h-full w-full flex-col items-center justify-center gap-2.5 p-6 text-center">
               <DottedPattern className="absolute inset-0 opacity-30" />
               <div className="border-foreground/10 relative z-10 flex h-12 w-12 items-center justify-center rounded-2xl border bg-background shadow-sm">
-                <Icon className="h-5 w-5 text-foreground/50" aria-hidden="true" />
+                <Icon
+                  className="h-5 w-5 text-foreground/50"
+                  aria-hidden="true"
+                />
               </div>
               <span className="relative z-10 text-[13px] font-medium tracking-tight text-foreground/40">
                 Visual preview placeholder
