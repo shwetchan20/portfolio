@@ -1,5 +1,8 @@
 # Shwet Kshirsagar — Personal Portfolio
 
+<img width="1892" height="907" alt="Screenshot 2026-10-24 031424" src="https://github.com/user-attachments/assets/b90f1183-80d5-4f85-8004-129e0233bc93" />
+
+
 A personal portfolio website built with Next.js, TypeScript, and Tailwind CSS. It showcases my background, skills, projects, and contact information through a responsive interface with interactive components and motion effects.
 
 **Repository:** [shwetchan20/portfolio](https://github.com/shwetchan20/portfolio)
