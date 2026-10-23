@@ -1,4 +1,4 @@
-<img width="1907" height="1027" alt="Screenshot 2026-10-24 033331" src="https://github.com/user-attachments/assets/ab89ef45-9d76-47ea-b45d-a7a8ad08eb84" />
+
 # Shwet Kshirsagar — Personal Portfolio
 
 <p align="center">
