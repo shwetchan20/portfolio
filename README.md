@@ -1,3 +1,4 @@
+<img width="1907" height="1027" alt="Screenshot 2026-10-24 033331" src="https://github.com/user-attachments/assets/ab89ef45-9d76-47ea-b45d-a7a8ad08eb84" />
 # Shwet Kshirsagar — Personal Portfolio
 
 <p align="center">
@@ -97,7 +98,8 @@ The production build compiled the application, completed TypeScript checks, gene
 
 Add a genuine screenshot of the successful terminal output here:
 
-![Ansible playbook execution](docs/screenshots/ansible-success.png)
+<img width="1907" height="1027" alt="Screenshot 2026-10-24 033331" src="https://github.com/user-attachments/assets/68080845-d526-48eb-b6af-c73743deeef1" />
+
 
 ## Getting Started
 
@@ -142,6 +144,10 @@ After successfully building the application:
 ```bash
 npm run start
 ```
+
+### commit history for you ;)
+<img width="1890" height="902" alt="Screenshot 2026-10-24 033317" src="https://github.com/user-attachments/assets/5571fb00-d82b-4a28-9263-54607bf20f9d" />
+
 
 ## Technology Stack
 
